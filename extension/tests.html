@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Unit Tests</title>
+	<script>
+	  // Stub so that background.js loads without errors.
+	  var chrome = {
+	    tabs: {
+	      onUpdated: {
+	        addListener: function() {}
+	      }
+	    }
+	  };
+	</script>
+  <script src="background.js"></script>
+  <script>
+    function log(msg, opt_color) {
+      var msgNode = document.createElement('div');
+      if (opt_color) {
+        msgNode.style.color = opt_color;
+      }
+      msgNode.innerText = msg;
+      document.getElementById('log').appendChild(msgNode);
+    }
+
+    function assertTrue(cond, opt_msg) {
+      if (cond) {
+        log('PASS: true');
+      } else {
+        log(opt_msg ? 'FAIL: ' + opt_msg : 'FAIL', 'red');
+      }
+    }
+
+    function assertEquals(expected, actual, opt_msg) {
+      if (expected == actual) {
+        log('PASS: ' + expected + ' (as expected)');
+      } else {
+        var msg = opt_msg ? ' ' + opt_msg : '';
+        log('FAIL: ' + expected + ' (expected) != ' + actual + ' (actual)' + msg, 'red');
+      }
+    }
+
+    var TEST_DATA = {
+      'http://example.com/post': 'http://example.com/post',
+      'http://example.com/post?foo=bar': 'http://example.com/post?foo=bar',
+      'http://example.com/post?utm_source=src&utm_medium=medium&utm_campaign=campaign': 'http://example.com/post',
+      'http://example.com/post?foo=bar&utm_source=src': 'http://example.com/post?foo=bar',
+      'http://example.com/post?utm_source=src&foo=bar': 'http://example.com/post?foo=bar',
+      'http://example.com/post?utm_source=src#foo=bar': 'http://example.com/post#foo=bar'
+    }
+
+    function runTests() {
+      for (var input in TEST_DATA) {
+        assertEquals(TEST_DATA[input], getStrippedUrl(input));
+      }
+    }
+  </script>
+</head>
+<body onload="runTests()">
+  <pre id="log"></pre>
+</body>
+</html>

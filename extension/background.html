@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-<script>
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (tab.url.indexOf('utm_') <= tab.url.indexOf('?')) return;
-  
-  var strippedUrl = tab.url.replace(
-      /([\?\&]utm_(source|medium|campaign|content)=[^&#]+)/ig, '');
-  
-  if (strippedUrl == tab.url) return;
-  
-  chrome.tabs.executeScript(
-      tabId,
-      {code: 'history.replaceState(undefined, undefined, "' + strippedUrl + '");'});
-});
-</script>
+<script src="background.js"></script>
 </body>
 </html>
