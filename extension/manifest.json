@@ -1,8 +1,11 @@
 {
-   "name": "Google Analytics Parameter Stripper",
-   "description": "Removes Google Analytics (UTM) tracking tokens from URL query strings.",
-   "version": "1.0.1",
-   "background_page": "background.html",
-   "permissions": [ "tabs", "<all_urls>" ],
-   "icons": {"48": "icon48.png", "128": "icon128.png" }
+  "manifest_version": 2,
+  "name": "Google Analytics Parameter Stripper",
+  "description": "Removes Google Analytics (UTM) tracking tokens from URL query strings.",
+  "version": "1.1",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [ "tabs", "<all_urls>" ],
+  "icons": {"48": "icon48.png", "128": "icon128.png" }
 }
