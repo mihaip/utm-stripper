@@ -13,11 +13,17 @@ function getStrippedUrl(url) {
   return strippedUrl;
 }
 
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  var strippedUrl = getStrippedUrl(tab.url);
-  if (strippedUrl == tab.url) return;
+chrome.webNavigation.onCompleted.addListener(
+  function(details) {
+    // Ignore subframe navigations.
+    if (details.frameId != 0) return;
 
-  chrome.tabs.executeScript(
-      tabId,
-      {code: 'history.replaceState(undefined, undefined, "' + strippedUrl + '");'});
-});
+    var url = details.url;
+    var strippedUrl = getStrippedUrl(url);
+    if (strippedUrl == url) return;
+
+    chrome.tabs.executeScript(
+        details.tabId,
+        {code: 'history.replaceState(undefined, undefined, "' + strippedUrl + '");'});
+  },
+  {url: [{queryContains: 'utm_'}]});
