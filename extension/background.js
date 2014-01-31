@@ -2,7 +2,7 @@ function getStrippedUrl(url) {
  if (url.indexOf('utm_') <= url.indexOf('?')) return url;
 
   var strippedUrl =
-      url.replace(/([\?\&]utm_(source|medium|campaign|content)=[^&#]+)/ig, '');
+      url.replace(/([\?\&]utm_(reader|source|medium|campaign|content)=[^&#]+)/ig, '');
 
   // If there were other query parameters, and the utm_ ones were first, then
   // we need to convert the first ampersand to a ? to still have a valid URL.
