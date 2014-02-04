@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Google Analytics Parameter Stripper",
   "description": "Removes Google Analytics (UTM) tracking tokens from URL query strings.",
-  "version": "1.2",
+  "version": "1.2.1",
   "background": {
     "scripts": ["background.js"],
     "persistent": false
