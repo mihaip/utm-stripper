@@ -23,14 +23,6 @@
       document.getElementById('log').appendChild(msgNode);
     }
 
-    function assertTrue(cond, opt_msg) {
-      if (cond) {
-        log('PASS: true');
-      } else {
-        log(opt_msg ? 'FAIL: ' + opt_msg : 'FAIL', 'red');
-      }
-    }
-
     function assertEquals(expected, actual, opt_msg) {
       if (expected == actual) {
         log('PASS: ' + expected + ' (as expected)');
@@ -43,10 +35,14 @@
     var TEST_DATA = {
       'http://example.com/post': 'http://example.com/post',
       'http://example.com/post?foo=bar': 'http://example.com/post?foo=bar',
-      'http://example.com/post?utm_source=src&utm_medium=medium&utm_campaign=campaign': 'http://example.com/post',
+      'http://example.com/post?utm_source=src&utm_medium=medium&utm_campaign=campaign&utm_reader=feedly': 'http://example.com/post',
       'http://example.com/post?foo=bar&utm_source=src': 'http://example.com/post?foo=bar',
       'http://example.com/post?utm_source=src&foo=bar': 'http://example.com/post?foo=bar',
-      'http://example.com/post?utm_source=src#foo=bar': 'http://example.com/post#foo=bar'
+      'http://example.com/post?utm_source=src#foo=bar': 'http://example.com/post#foo=bar',
+
+      'https://www.youtube.com/watch?v=YlGqN3AKOsA&feature=kp': 'https://www.youtube.com/watch?v=YlGqN3AKOsA',
+      'https://www.youtube.com/watch?feature=youtu.be&v=YlGqN3AKOsA': 'https://www.youtube.com/watch?v=YlGqN3AKOsA',
+      'http://www.youtube.com/watch?v=YlGqN3AKOsA&feature=kp': 'http://www.youtube.com/watch?v=YlGqN3AKOsA'
     }
 
     function runTests() {
