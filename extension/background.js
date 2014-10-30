@@ -1,13 +1,22 @@
 function getStrippedUrl(url) {
- if (url.indexOf('utm_') > url.indexOf('?')) {
+  // Strip UTM parameters 
+  if (url.indexOf('utm_') > url.indexOf('?')) {
     url = url.replace(
         /([\?\&]utm_(reader|source|medium|campaign|content|term)=[^&#]+)/ig,
         '');
   }
+  
+  // Strip MailChimp parameters
+  if (url.indexOf('mc_eid') > url.indexOf('?') || url.indexOf('mc_cid') > url.indexOf('?')) {
+    url = url.replace(
+        /([\?\&](mc_cid|mc_eid)=[^&#]+)/ig,
+        '');
+  }
 
+  // Strip YouTube parameters
   if (url.indexOf('http://www.youtube.com/watch') == 0 ||
       url.indexOf('https://www.youtube.com/watch') == 0) {
-    url = url.replace(/([\?\&]feature=[^&#]+)/ig, '');
+    url = url.replace(/([\?\&](feature|app)=[^&#]+)/ig, '');
   }
 
   // If there were other query parameters, and the stripped ones were first,
@@ -36,6 +45,8 @@ chrome.webNavigation.onDOMContentLoaded.addListener(
   {
     url: [
       {queryContains: 'utm_'},
+      {queryContains: 'mc_cid'},
+      {queryContains: 'mc_eid'},
       {hostEquals: 'www.youtube.com', pathPrefix: '/watch'},
     ]
   });
