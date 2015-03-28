@@ -1,11 +1,11 @@
 function getStrippedUrl(url) {
-  // Strip UTM parameters 
+  // Strip UTM parameters
   if (url.indexOf('utm_') > url.indexOf('?')) {
     url = url.replace(
         /([\?\&]utm_(reader|source|medium|campaign|content|term)=[^&#]+)/ig,
         '');
   }
-  
+
   // Strip MailChimp parameters
   if (url.indexOf('mc_eid') > url.indexOf('?') || url.indexOf('mc_cid') > url.indexOf('?')) {
     url = url.replace(
@@ -16,7 +16,7 @@ function getStrippedUrl(url) {
   // Strip YouTube parameters
   if (url.indexOf('http://www.youtube.com/watch') == 0 ||
       url.indexOf('https://www.youtube.com/watch') == 0) {
-    url = url.replace(/([\?\&](feature|app)=[^&#]+)/ig, '');
+    url = url.replace(/([\?\&](feature|app|ac)=[^&#]*)/ig, '');
   }
 
   // If there were other query parameters, and the stripped ones were first,
