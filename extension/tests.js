@@ -35,6 +35,7 @@ var TEST_DATA = {
   'http://www.youtube.com/watch?v=YlGqN3AKOsA&ac=test': 'http://www.youtube.com/watch?v=YlGqN3AKOsA',
   'http://www.youtube.com/watch?ac=&v=YlGqN3AKOsA': 'http://www.youtube.com/watch?v=YlGqN3AKOsA',
   'http://www.youtube.com/watch?v=YlGqN3AKOsA&ac=&app=desktop': 'http://www.youtube.com/watch?v=YlGqN3AKOsA',
+  'https://www.youtube.com/watch?v=3OHBlPvK9Ek&src_vid=4KHCkXN2F8I&annotation_id=annotation_1193924099': 'https://www.youtube.com/watch?v=3OHBlPvK9Ek',
 }
 
 function runTests() {
