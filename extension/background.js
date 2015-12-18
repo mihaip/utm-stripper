@@ -19,6 +19,11 @@ function getStrippedUrl(url) {
     url = url.replace(/([\?\&](feature|app|ac|src_vid|annotation_id)=[^&#]*)/ig, '');
   }
 
+  // Strip Yandex openstat parameters
+  if (url.indexOf('_openstat') > url.indexOf('?')) {
+    url = url.replace(/([\?\&]_openstat=[^&#]+)/ig, '');
+  }
+
   // If there were other query parameters, and the stripped ones were first,
   // then we need to convert the first ampersand to a ? to still have a valid
   // URL.
