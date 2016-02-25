@@ -19,7 +19,7 @@ function assertEquals(expected, actual, opt_msg) {
 var TEST_DATA = {
   'http://example.com/post': 'http://example.com/post',
   'http://example.com/post?foo=bar': 'http://example.com/post?foo=bar',
-  'http://example.com/post?utm_source=src&utm_medium=medium&utm_campaign=campaign&utm_reader=feedly': 'http://example.com/post',
+  'http://example.com/post?utm_source=src&utm_medium=medium&utm_campaign=campaign&utm_reader=feedly&utm_term=': 'http://example.com/post',
   'http://example.com/post?mc_cid=1234&mc_eid=4321': 'http://example.com/post',
   'http://example.com/post?foo=bar&utm_source=src': 'http://example.com/post?foo=bar',
   'http://example.com/post?utm_source=src&foo=bar': 'http://example.com/post?foo=bar',

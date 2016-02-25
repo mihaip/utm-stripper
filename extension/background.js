@@ -2,7 +2,7 @@ function getStrippedUrl(url) {
   // Strip UTM parameters
   if (url.indexOf('utm_') > url.indexOf('?')) {
     url = url.replace(
-        /([\?\&]utm_(reader|source|medium|campaign|content|term)=[^&#]+)/ig,
+        /([\?\&]utm_(reader|source|medium|campaign|content|term)=[^&#]*)/ig,
         '');
   }
 
