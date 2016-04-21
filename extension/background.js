@@ -24,6 +24,13 @@ function getStrippedUrl(url) {
     url = url.replace(/([\?\&]_openstat=[^&#]+)/ig, '');
   }
 
+  // Strip HubSpot parameters
+  if (url.indexOf('_hsenc') > url.indexOf('?') || url.indexOf('_hsmi') > url.indexOf('?')) {
+    url = url.replace(
+        /([\?\&](_hsenc|_hsmi)=[^&#]+)/ig,
+        '');
+  }
+
   // If there were other query parameters, and the stripped ones were first,
   // then we need to convert the first ampersand to a ? to still have a valid
   // URL.
@@ -52,6 +59,8 @@ chrome.webNavigation.onDOMContentLoaded.addListener(
       {queryContains: 'utm_'},
       {queryContains: 'mc_cid'},
       {queryContains: 'mc_eid'},
+      {queryContains: '_hsmi'},
+      {queryContains: '_hsenc'},
       {hostEquals: 'www.youtube.com', pathPrefix: '/watch'},
     ]
   });
