@@ -1,6 +1,6 @@
 Removes Google Analytics/Urchin tracking parameters (`utm_source`, `utm_medium`, etc.) from URLs that are displayed in the address bar. This is done as a purely aesthetic post-processing step, the site still sees the parameters at initial loading time.
 
-Also cleans up YouTube URLs slightly.
+Also cleans up YouTube URLs slightly and removes HubSpot tracking parameters.
 
 This extension is a variant of the [Tracking Token Stripper](https://chrome.google.com/webstore/detail/kcpnkledgcbobhkgimpbmejgockkplob) extension with two improvements:
 
