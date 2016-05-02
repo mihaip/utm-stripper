@@ -42,6 +42,9 @@ var TEST_DATA = {
   'http://www.site.ru/path?foo=bar&_openstat=ZGlyZWN0LnlhbmRleC5ydTsxMjM0OzU2Nzg5O3lhbmRleC5ydTpwcmVtaXVt': 'http://www.site.ru/path?foo=bar',
   'http://www.site.ru/path?_openstat=ZGlyZWN0LnlhbmRleC5ydTsxMjM0OzU2Nzg5O3lhbmRleC5ydTpwcmVtaXVt&foo=bar': 'http://www.site.ru/path?foo=bar',
   'http://www.site.ru/path?_openstat=ZGlyZWN0LnlhbmRleC5ydTsxMjM0OzU2Nzg5O3lhbmRleC5ydTpwcmVtaXVt#fragment': 'http://www.site.ru/path#fragment',
+
+  'http://www.site.ru/path?_hsenc=p2ANqtz-_j2noaLd_iaXBsfMnXE4ZUzjZUXO24HCCJkm&_hsmi=27699104': 'http://www.site.ru/path',
+  'http://www.site.ru/path?_hsenc=p2ANqtz-_j2noaLd_iaXBsfMnXE4ZUzjZUXO24HCCJkm&_hsmi=27699104#fragment': 'http://www.site.ru/path#fragment',
 }
 
 function runTests() {
